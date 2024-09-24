@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct introswift: View {
+struct IntroSwift: View {
     @State private var buttonColor: Color = .blue
     var body: some View {
             VStack{
@@ -21,21 +21,24 @@ struct introswift: View {
                     }
                 }
                     Section {
-                        NavigationLink(destination: tulane()) {
+                    
+                        NavigationLink(destination: Tulane()){
+                            BigNavButton(message: "Click me!",
+                            backgroundColor: buttonColor,
+                            foregroundColor: .white,
+                            font: .title3,
+                            fontWeight: .medium)
                             
-                            Text("Click me!")
-                                .padding(70)
-                                .background{
-                                    buttonColor
-                                }
-                                .overlay(content: {
-                                    Capsule(style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-                                        .stroke(lineWidth: 5)
-                                })
-                                .foregroundStyle(.white)
-                                .font(.largeTitle)
-                                .fontWeight(.medium)
                         }
+                        
+                        .overlay(content: {
+                            Capsule(style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                                .stroke(lineWidth: 5)
+                                .foregroundColor(.white)
+                                
+                        })
+                    
+                        
                     }
                 }
             }
@@ -44,5 +47,5 @@ struct introswift: View {
 
 
 #Preview {
-    introswift()
+    IntroSwift()
 }

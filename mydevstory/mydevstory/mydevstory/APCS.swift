@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct apcs: View {
+struct APCS: View {
     
     @State private var isTextVisible = false
     
@@ -21,6 +21,7 @@ struct apcs: View {
             Text("My first real computer science class was AP Comp Sci! I took it my junior year. It was all in Java.").padding()
             Text("After this class I realized I wanted to pursue CompSci in college.").padding()
         }
+        .background(Color.yellow)
         VStack{
             Button(action: {
                 
@@ -38,25 +39,26 @@ struct apcs: View {
                     .padding()
                     .transition(.scale)
             }
-        
-                NavigationLink(destination: introswift()) {
-                    Text("Click me!")
-                        .padding(70)
-                        .background{
-                            Color.orange
-                        }
-                        .overlay(content: {
-                            Ellipse()
-                                .stroke(lineWidth: 5)
-                        })
-                        .foregroundStyle(.white)
-                        .font(.title3)
-                        .fontWeight(.medium)
-                }
+            NavigationLink(destination: IntroSwift()){
+                BigNavButton(message: "Click me!",
+                backgroundColor: .orange,
+                foregroundColor: .white,
+                font: .title3,
+                fontWeight: .medium)
+                
             }
+            
+            .overlay(content: {
+                Ellipse()
+                    .stroke(lineWidth: 5)
+                    .foregroundColor(.white)
+            })
+           
+            }
+       
         }
     }
     
 #Preview {
-    apcs()
+    APCS()
 }

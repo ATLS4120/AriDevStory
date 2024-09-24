@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-struct cuctd: View {
+struct CuCtd: View {
+    @State private var fontSize: Double = 16
     var body: some View {
         Text("CTD Life!").font(.largeTitle)
             HStack{
-                Text(Constants.ctdMessage).padding()
+                Text(Constants.CtdMessage).padding()
                 
-                NavigationLink(destination: futurecoding()) {
-                    
-                    Text("Future!")
+                NavigationLink("Future!"){ FutureCoding()}
                         .lineLimit(7)
                         .padding(7)
                         .background{
@@ -28,15 +27,21 @@ struct cuctd: View {
                         .foregroundStyle(.white)
                         .font(.title2)
                         .fontWeight(.medium)
-                }
+                
             }
+        VStack{
+            Slider(value: $fontSize, in: 12...24)
+                            .padding()
+                        Text("Font Size: \(fontSize, specifier: "%.0f")")
+                .font(.system(size: fontSize))
+        }
         }
     }
 
 
 #Preview {
-    cuctd()
+    CuCtd()
 }
 private enum Constants {
-    static let ctdMessage = "I switched to CTD! I loved the Intro Web class and Tiny Games(Lua). This semester, I am an LA for web and taking this class, advanced web, and Intro to VR "
+    static let CtdMessage = "I switched to CTD! I loved the Intro Web class and Tiny Games(Lua). This semester, I am an LA for web and taking this class, advanced web, and Intro to VR "
 }
